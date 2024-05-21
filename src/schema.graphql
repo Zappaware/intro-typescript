@@ -33,7 +33,9 @@ type Track {
 
 type Mutation {
     "Add one or more items to a user's playlist."
-    addItemsToPlaylist(input: AddItemsToPlaylistInput!): AddItemsToPlaylistPayload!
+    addItemsToPlaylist(
+        input: AddItemsToPlaylistInput!
+    ): AddItemsToPlaylistPayload!
 }
 
 type AddItemsToPlaylistPayload {
