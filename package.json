@@ -15,14 +15,22 @@
   },
   "scripts": {
     "compile": "tsc",
-    "dev": "ts-node-dev --respawn ./src/index.ts",
+    "dev": "concurrently \"ts-node-dev --respawn --watch ./**/*.graphql ./src/index.ts\" \"npm run generate --watch\"",
     "start": "npm run compile && nodemon ./dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "generate": "graphql-codegen --watch \"src/schema.graphql\""
   },
   "dependencies": {
-    "@parcel/watcher": "^2.4.0"
+    "@apollo/datasource-rest": "^6.2.2",
+    "@apollo/server": "^4.10.4",
+    "@parcel/watcher": "^2.4.0",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.7",
+    "@graphql-codegen/typescript-resolvers": "^4.1.0",
     "@types/jest": "^29.0.3",
     "@types/node": "^20.0.0",
     "concurrently": "^8.2.2",
